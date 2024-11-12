@@ -3,16 +3,15 @@ import Button from "../Button/Button";
 import "./EmployeeCard.css";
 import { calcYearsWorked } from "../../utilis/yearsCalc";
 
-const EmployeeCard = (props) => {
+const EmployeeCard = ({ startDate, department, name, location, role }) => {
   const [promotedRole, setRole] = useState(false);
 
-  const yearsWorked = calcYearsWorked(props.startDate);
-
+  const yearsWorked = calcYearsWorked(startDate);
   const isProbation = yearsWorked < 0.5;
   const isAnniversary = yearsWorked > 0 && yearsWorked % 5 === 0;
 
   const clickHandler = () => {
-    setRole(!promotedRole);
+    setRole((prevState) => !prevState);
   };
 
   const getDepartmentClass = (dept) => {
@@ -27,9 +26,9 @@ const EmployeeCard = (props) => {
   };
 
   return (
-    <div className={`card ${getDepartmentClass(props.department)}`}>
+    <div className={`card ${getDepartmentClass(department)}`}>
       <div className="card-header">
-        <p className="name">{props.name}</p>
+        <p className="name">{name}</p>
         <div className="card-icons">
           {promotedRole && (
             <div>
@@ -39,7 +38,7 @@ const EmployeeCard = (props) => {
           )}
           {isAnniversary && (
             <div>
-              <span class="material-symbols-outlined celebrate">
+              <span className="material-symbols-outlined celebrate">
                 celebration
               </span>
               <p className="card-icon-message">
@@ -50,7 +49,7 @@ const EmployeeCard = (props) => {
 
           {isProbation && (
             <div>
-              <span class="material-symbols-outlined notify">
+              <span className="material-symbols-outlined notify">
                 notifications
               </span>
               <p className="card-icon-message">
@@ -63,12 +62,12 @@ const EmployeeCard = (props) => {
       </div>
       <div className="card-content">
         <div className="card-data">
-          <p className="role">{props.role}</p>
-          <p className="department">{props.department}</p>
-          <p className="location">{props.location}</p>
+          <p className="role">{role}</p>
+          <p className="department">{department}</p>
+          <p className="location">{location}</p>
         </div>
         <div className="card-image">
-          <img src={`https://robohash.org/${props.name}?set=set5`} />
+          <img src={`https://robohash.org/${name}?set=set5`} />
         </div>
       </div>
       <div className="card-footer">
@@ -78,7 +77,7 @@ const EmployeeCard = (props) => {
         />
         <p className="years">
           {yearsWorked} <span className="text">years in school </span>
-          <span className="date">({props.startDate})</span>
+          <span className="date">({startDate})</span>
         </p>
       </div>
     </div>
