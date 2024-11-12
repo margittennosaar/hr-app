@@ -2,32 +2,31 @@ import { useState } from "react";
 import Button from "../Button/Button";
 import "./EmployeeCard.css";
 import { calcYearsWorked } from "../../utilis/yearsCalc";
+import { getDepartmentClass } from "../../utilis/styleUtils";
 
 const EmployeeCard = ({ startDate, department, name, location, role }) => {
-  const [promotedRole, setRole] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
+  const [promotedRole, setPromotedRole] = useState(false);
+  const [person, setPerson] = useState({ department, location, role });
 
   const yearsWorked = calcYearsWorked(startDate);
   const isProbation = yearsWorked < 0.5;
   const isAnniversary = yearsWorked > 0 && yearsWorked % 5 === 0;
 
-  const clickHandler = () => {
-    setRole((prevState) => !prevState);
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setPerson((prevState) => ({ ...prevState, [name]: value }));
   };
 
-  const getDepartmentClass = (dept) => {
-    switch (dept) {
-      case "Web Development":
-        return "web";
-      case "Game Development":
-        return "game";
-      default:
-        return "default";
-    }
-  };
+  const renderEditableField = (value, name) =>
+    isEditing ? (
+      <input value={value} name={name} onChange={handleInputChange} />
+    ) : (
+      <p className={name}>{value}</p>
+    );
 
   return (
-    <div className={`card ${getDepartmentClass(department)}`}>
+    <div className={`card ${getDepartmentClass(person.department)}`}>
       <div className="card-header">
         <p className="name">{name}</p>
         <div className="card-icons">
@@ -63,24 +62,28 @@ const EmployeeCard = ({ startDate, department, name, location, role }) => {
       </div>
       <div className="card-content">
         <div className="card-data">
-          <p className="role">{role}</p>
-          <p className="department">{department}</p>
-          <p className="location">{location}</p>
+          {renderEditableField(person.role, "role")}
+          {renderEditableField(person.department, "department")}
+          {renderEditableField(person.location, "location")}
         </div>
         <div className="card-image">
-          <img src={`https://robohash.org/${name}?set=set5`} />
+          <img src={`https://robohash.org/${name}?set=set5`} alt={name} />
         </div>
       </div>
       <div className="card-footer">
         <div className="card-footer-actions">
           <Button
-            onClick={clickHandler}
+            onClick={() => setPromotedRole((prev) => !prev)}
             text={promotedRole ? "Demote" : "Promote"}
           />
-          <Button text={isEditing ? "Save" : "Edit"} role="secondary" />
+          <Button
+            onClick={() => setIsEditing((prev) => !prev)}
+            text={isEditing ? "Save" : "Edit"}
+            role="secondary"
+          />
         </div>
         <p className="years">
-          {yearsWorked} <span className="text">years in school </span>
+          {yearsWorked} <span className="text"> years in school</span>
           <span className="date">({startDate})</span>
         </p>
       </div>
