@@ -83,7 +83,7 @@ const EmployeeCard = ({ startDate, department, name, location, role }) => {
           />
         </div>
         <p className="years">
-          {yearsWorked} <span className="text"> years in school</span>
+          {yearsWorked} <span className="text"> years in school </span>
           <span className="date">({startDate})</span>
         </p>
       </div>

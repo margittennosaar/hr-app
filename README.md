@@ -2,14 +2,18 @@
 
 ## Week3
 
+Note: The teacher's solution is highly optimized. Follow the steps and try to solve this phase on your own, without directly using the provided solution. Refer back to the solution only after you have completed and tested your implementation.
+
 ### Step 1
-- destrucutre props
-- Add Button component and replace button element with the button component
-- Update styling, use conditional rendering for visually difference people form different department 
-- add your own favicon
-- make secondary button styling and add it as a props.role to Button component
+- Destructure props for clarity and cleaner code.
+- Create a `Button` component and replace existing button elements with this component.
+- Update styling using conditional rendering to visually differentiate people from different departments.
+- Add a custom favicon to the project.
+- Create secondary button styling and use it as a props (`role="secondary"`) for the `Button` component.
 
 ### Step 2 
-- add edit button for the card
-- add form to edit the role in the card
-- 
+- Add an "Edit" button to the card.
+- Implement conditional rendering to toggle between "Edit" and "Save" buttons.
+- Add functionality to edit the role, department, and location within the card.
+- Ensure that department styling updates immediately when editing the department.
+- Optimize the code for readability and efficiency.
