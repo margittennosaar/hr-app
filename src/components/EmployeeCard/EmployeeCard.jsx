@@ -5,6 +5,7 @@ import { calcYearsWorked } from "../../utilis/yearsCalc";
 
 const EmployeeCard = ({ startDate, department, name, location, role }) => {
   const [promotedRole, setRole] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
 
   const yearsWorked = calcYearsWorked(startDate);
   const isProbation = yearsWorked < 0.5;
@@ -71,10 +72,13 @@ const EmployeeCard = ({ startDate, department, name, location, role }) => {
         </div>
       </div>
       <div className="card-footer">
-        <Button
-          onClick={clickHandler}
-          text={promotedRole ? "Demote" : "Promote"}
-        />
+        <div className="card-footer-actions">
+          <Button
+            onClick={clickHandler}
+            text={promotedRole ? "Demote" : "Promote"}
+          />
+          <Button text={isEditing ? "Save" : "Edit"} role="secondary" />
+        </div>
         <p className="years">
           {yearsWorked} <span className="text">years in school </span>
           <span className="date">({startDate})</span>

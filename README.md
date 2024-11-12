@@ -7,6 +7,7 @@
 - Add Button component and replace button element with the button component
 - Update styling, use conditional rendering for visually difference people form different department 
 - add your own favicon
+- make secondary button styling and add it as a props.role to Button component
 
 ### Step 2 
 - add edit button for the card
