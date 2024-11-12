@@ -17,3 +17,9 @@ Note: The teacher's solution is highly optimized. Follow the steps and try to so
 - Add functionality to edit the role, department, and location within the card.
 - Ensure that department styling updates immediately when editing the department.
 - Optimize the code for readability and efficiency.
+
+### Step 3
+
+- Update the project README file to reflect your changes and document any relevant details.
+- Ensure the code is clean, well-commented, and functions as intended.
+- Push your code to GitHub.
