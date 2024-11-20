@@ -23,4 +23,3 @@
    - Add imputs for all fielts matching the data structure in `personData`
    - Add the `useState` to manage form data
    - Log the form data to the console on form submission (later we will add functionality to save the data).
-
