@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Button from "../Button/Button";
 import "./Header.css";
 
@@ -7,7 +8,19 @@ const Header = (props) => {
   return (
     <header>
       <h1>Employee dashboard</h1>
-      <Button onClick={props.onClick} text={buttonText} />
+      <div>
+        <nav>
+          <ul>
+            <li>
+              <Link to="employees">Employees</Link>
+            </li>
+            <li>
+              <Link to="new">Add new</Link>
+            </li>
+          </ul>
+        </nav>
+        {/*         <Button onClick={props.onClick} text={buttonText} /> */}
+      </div>
     </header>
   );
 };
