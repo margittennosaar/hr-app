@@ -12,3 +12,15 @@
    - `/employees`
    - `/new`
    - `/something` (to verify that the `ErrorPage` displays correctly). 
+
+
+### Step 2
+1. Modify the Header to include a menu with navigation links
+   - employees
+   - add new
+2. Make sure that List component display the employees list
+3. Prepare Form component
+   - Add imputs for all fielts matching the data structure in `personData`
+   - Add the `useState` to manage form data
+   - Log the form data to the console on form submission (later we will add functionality to save the data).
+
