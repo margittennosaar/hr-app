@@ -2,12 +2,14 @@ import { Link } from "react-router-dom";
 import Button from "../Button/Button";
 import "./Header.css";
 
-const Header = (props) => {
-  const buttonText = props.loginStatus ? "Log out" : "Log in";
+const Header = ({ isLoggedIn, loginHandler }) => {
+  const buttonText = isLoggedIn ? "Log out" : "Log in";
 
   return (
     <header>
-      <h1>Employee dashboard</h1>
+      <Link to="/">
+        <h1>Employee dashboard</h1>
+      </Link>
       <div>
         <nav>
           <ul>
@@ -18,8 +20,8 @@ const Header = (props) => {
               <Link to="new">Add new</Link>
             </li>
           </ul>
+          <Button onClick={loginHandler} text={buttonText} role="menu" />
         </nav>
-        {/*         <Button onClick={props.onClick} text={buttonText} /> */}
       </div>
     </header>
   );
