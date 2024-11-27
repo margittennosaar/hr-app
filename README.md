@@ -1,31 +1,21 @@
-# HR Application for Practicing React
+# Week 5
 
-## Week 4
+## Step 1
+1. Install `json-server` to create a mock backend:  
+2. Create a `db.json` file and move the `personData` content into this file under a `persons` key.
 
-### Step 1
-1. Install `react-router-dom` to manage routing in your application.
-2. Create pages for `Root`, `Login`, `ErrorPage`, `List`, and `Form`.
-3. Set up routes:
-   - The `Root` page will include the `Header`, `Outlet`, and `Footer` components.
-4. Test your routes by entering the following paths in the URL:
-   - `/login`
-   - `/employees`
-   - `/new`
-   - `/something` (to verify that the `ErrorPage` is displayed correctly).
+## Step 2
+1. Remove the static `personData` import from your project.  
+2. Update your application to fetch the employee list dynamically from `http://localhost:3001/persons` using API calls.
 
-### Step 2
-1. Modify the `Header` to include a menu with navigation links:
-   - **Employees**: Links to `/employees`.
-   - **Add New**: Links to `/new`.
-2. Ensure the `List` component displays the employees list.
-3. Prepare the `Form` component:
-   - Add inputs for all fields matching the structure in `personData`.
-   - Use `useState` to manage form data. (Optional: use `useRef` instead of `useState`)
-   - Log the form data to the console upon submission (functionality to save the data will be added later).
+## Step 3
+1. Add functionality to create new employees by sending a `POST` request to `http://localhost:3001/persons`.  
+2. Ensure that new employees are added to the list and persist in `db.json`.
 
-### Step 3
-1. Add login functionality:
-   - On landing, the user will see the `Login` component.
-   - The `Login` component should include fields for a username and password.
-   - Add a condition to allow the user to log in only with the correct credentials.
-2. After successful login, display the `Root` component to the user.
+## Step 4
+1. Update the edit functionality in your employee card so that any changes are saved to `db.json`.  
+
+## Step 5
+1. Add a "See More" button on each employee card to navigate to a detailed view page.  
+2. Adjust the employee card to show only basic details, with full details displayed on the detailed view page.  
+3. Include a "Back to List" button on the detailed view page to return to the employees list.
