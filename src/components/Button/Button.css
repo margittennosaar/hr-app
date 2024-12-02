@@ -9,6 +9,7 @@
   padding: 0.3rem 1rem;
   height: 2rem;
   border-radius: 8px;
+  border:none;
 }
 
 .btn.primary:hover {
@@ -24,6 +25,17 @@
 
 .btn.primary {
   border: 1px solid #005872;
+}
+
+.btn.btn.primary-bg {
+  background-color: #fff;
+  margin: 1rem 0 0 0;
+  margin-right: 1rem;
+}
+
+.btn.btn.primary-bg:hover {
+  background-color: #0095c3;
+  color:white
 }
 
 .btn.secondary {
