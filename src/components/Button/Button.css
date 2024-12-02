@@ -3,6 +3,7 @@
   box-shadow: none;
   font-weight: 500;
   font-family: inherit;
+  font-size: 0.8rem;
   background-color: transparent;
   cursor: pointer;
   color: #005872;
@@ -40,7 +41,7 @@
 
 .btn.secondary {
   border: none;
-  padding: 0.3rem 0.8rem;
+  padding: 0.3rem 0.8rem 0 0;
 }
 
 .btn.menu {

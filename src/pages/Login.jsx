@@ -22,7 +22,7 @@ const Login = ({ loginHandler }) => {
   };
 
   return (
-    <main>
+    <>
       <form className="login-form" onSubmit={checkCredentials}>
         <p>Please log in</p>
         <div>
@@ -43,7 +43,7 @@ const Login = ({ loginHandler }) => {
         </div>
         <Button text="Log in" type="submit" />
       </form>
-    </main>
+    </>
   );
 };
 

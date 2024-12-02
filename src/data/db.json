@@ -79,6 +79,14 @@
       "department": "Game Development",
       "startDate": "2019-09-30",
       "location": "Pasila"
+    },
+    {
+      "id": "dbc3",
+      "name": "Margit Tennosaar",
+      "role": "Teacher ",
+      "department": "Web Development",
+      "startDate": "2019-01-01",
+      "location": "Pasila"
     }
   ]
 }

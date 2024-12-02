@@ -1,13 +1,16 @@
 import { useState } from "react";
 import Button from "../Button/Button";
+import axios from "axios";
 import "./EmployeeCard.css";
 import { calcYearsWorked } from "../../utilis/yearsCalc";
 import { getDepartmentClass } from "../../utilis/styleUtils";
+import { useNavigate } from "react-router-dom";
 
-const EmployeeCard = ({ startDate, department, name, location, role }) => {
+const EmployeeCard = ({ startDate, department, name, location, role, id }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [promotedRole, setPromotedRole] = useState(false);
   const [person, setPerson] = useState({ department, location, role });
+  const navigate = useNavigate();
 
   const yearsWorked = calcYearsWorked(startDate);
   const isProbation = yearsWorked < 0.5;
@@ -16,6 +19,14 @@ const EmployeeCard = ({ startDate, department, name, location, role }) => {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setPerson((prevState) => ({ ...prevState, [name]: value }));
+  };
+
+  const handleEdit = async () => {
+    try {
+      await axios.patch(`http://localhost:3001/persons/${id}`, person);
+    } catch (error) {
+      console.error("Error updating employee:", error);
+    }
   };
 
   const renderEditableField = (value, name) =>
@@ -75,9 +86,18 @@ const EmployeeCard = ({ startDate, department, name, location, role }) => {
           <Button
             onClick={() => setPromotedRole((prev) => !prev)}
             text={promotedRole ? "Demote" : "Promote"}
+            role="secondary"
           />
           <Button
-            onClick={() => setIsEditing((prev) => !prev)}
+            onClick={() => navigate(`/employee/${id}`)}
+            text={"See details"}
+            role="secondary"
+          />
+          <Button
+            onClick={() => {
+              if (isEditing) handleEdit();
+              setIsEditing((prev) => !prev);
+            }}
             text={isEditing ? "Save" : "Edit"}
             role="secondary"
           />

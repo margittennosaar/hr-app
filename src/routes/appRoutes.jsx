@@ -4,6 +4,7 @@ import List from "../pages/List";
 import Form from "../pages/Form";
 import Login from "../pages/Login";
 import ErrorPage from "../pages/ErrorPage";
+import SinglePage from "../pages/SinglePage";
 
 const createRoutes = (isLoggedIn, loginHandler) => {
   return createBrowserRouter(
@@ -18,6 +19,7 @@ const createRoutes = (isLoggedIn, loginHandler) => {
         errorElement: <ErrorPage />,
         children: [
           { path: "/", element: <List /> },
+          { path: "/employee/:id", element: <SinglePage /> },
           { path: "/new", element: <Form /> },
         ],
       },
