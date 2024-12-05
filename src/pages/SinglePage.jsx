@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
+import useAxiosRequest from "../services/useAxios";
 import { useParams, useNavigate } from "react-router-dom";
 import Button from "../components/Button/Button";
 import "./SinglePage.css";
@@ -9,21 +9,17 @@ const SinglePage = () => {
   const navigate = useNavigate();
   const [details, setDetails] = useState();
 
+  const { data, loading, error, read } = useAxiosRequest(
+    `http://localhost:3001/persons/${id}`
+  );
+
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(`http://localhost:3001/persons/${id}`);
-        setDetails(response.data);
-      } catch (error) {
-        console.error("Error fetching employee details:", error);
-      }
-    };
-    fetchData();
+    read();
   }, []);
 
   return (
     <div>
-      {details ? (
+      {data ? (
         <div className="singlePage-content">
           <h2>{details.name}</h2>
           <p>{details.role}</p>

@@ -1,39 +1,36 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import Button from "../components/Button/Button";
 import "./Form.css";
+import useAxiosRequest from "../services/useAxios";
 
 const Form = () => {
   const [formData, setFormData] = useState();
   const [successMessage, setSuccessMessage] = useState(null);
   const navigate = useNavigate();
 
+  const { create } = useAxiosRequest("http://localhost:3001/");
+
   const changeHandler = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const submitHandler = async (e) => {
+  const submitHandler = (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:3001/persons", formData);
+      create("persons", formData);
       setSuccessMessage("Employee added successfully!");
-    } catch (error) {
-      console.error("Error adding employee:", error);
+      setFormData({
+        name: "",
+        role: "",
+        department: "",
+        startDate: "",
+        location: "",
+      });
+    } catch {
       setSuccessMessage("Failed to add employee. Please try again.");
     }
-  };
-
-  const resetForm = () => {
-    setFormData({
-      name: "",
-      role: "",
-      department: "",
-      startDate: "",
-      location: "",
-    });
-    setSuccessMessage(null);
   };
 
   return (
@@ -67,8 +64,8 @@ const Form = () => {
           />
           <Button
             text="Add Another Employee"
-            onClick={resetForm}
             role="primary-bg"
+            onClick={() => setSuccessMessage(null)}
           />
         </div>
       )}

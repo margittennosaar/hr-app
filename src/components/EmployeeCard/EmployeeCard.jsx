@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Button from "../Button/Button";
-import axios from "axios";
+import useAxiosRequest from "../../services/useAxios";
 import "./EmployeeCard.css";
 import { calcYearsWorked } from "../../utilis/yearsCalc";
 import { getDepartmentClass } from "../../utilis/styleUtils";
@@ -12,6 +12,8 @@ const EmployeeCard = ({ startDate, department, name, location, role, id }) => {
   const [person, setPerson] = useState({ department, location, role });
   const navigate = useNavigate();
 
+  const { error, update } = useAxiosRequest("http://localhost:3001/");
+
   const yearsWorked = calcYearsWorked(startDate);
   const isProbation = yearsWorked < 0.5;
   const isAnniversary = yearsWorked > 0 && yearsWorked % 5 === 0;
@@ -21,12 +23,8 @@ const EmployeeCard = ({ startDate, department, name, location, role, id }) => {
     setPerson((prevState) => ({ ...prevState, [name]: value }));
   };
 
-  const handleEdit = async () => {
-    try {
-      await axios.patch(`http://localhost:3001/persons/${id}`, person);
-    } catch (error) {
-      console.error("Error updating employee:", error);
-    }
+  const handleEdit = () => {
+    update(`persons/${id}`, person);
   };
 
   const renderEditableField = (value, name) =>
@@ -35,6 +33,8 @@ const EmployeeCard = ({ startDate, department, name, location, role, id }) => {
     ) : (
       <p className={name}>{value}</p>
     );
+
+  if (error) return <p>{error}</p>;
 
   return (
     <div className={`card ${getDepartmentClass(person.department)}`}>
