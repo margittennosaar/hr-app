@@ -7,7 +7,6 @@ import "./SinglePage.css";
 const SinglePage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [details, setDetails] = useState();
 
   const { data, loading, error, read } = useAxiosRequest(
     `http://localhost:3001/persons/${id}`
@@ -21,11 +20,11 @@ const SinglePage = () => {
     <div>
       {data ? (
         <div className="singlePage-content">
-          <h2>{details.name}</h2>
-          <p>{details.role}</p>
-          <p>{details.department}</p>
-          <p>{details.location}</p>
-          <p> {details.startDate}</p>
+          <h2>{data.name}</h2>
+          <p>{data.role}</p>
+          <p>{data.department}</p>
+          <p>{data.location}</p>
+          <p> {data.startDate}</p>
         </div>
       ) : (
         <p>Loading...</p>

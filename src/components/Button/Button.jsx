@@ -1,9 +1,14 @@
-import "./Button.css";
+import styles from "./Button.module.css";
 
 const Button = ({ onClick, text, type = "button", role = "primary" }) => {
   return (
-    <button onClick={onClick} type={type} className={`btn ${role}`}>
-      {text}
+    <button
+      onClick={onClick}
+      type={type}
+      className={`${styles.btn} ${styles[role]}`}
+    >
+      {" "}
+      {text}{" "}
     </button>
   );
 };
