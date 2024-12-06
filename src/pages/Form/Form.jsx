@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Button from "../components/Button/Button";
-import "./Form.css";
-import useAxiosRequest from "../services/useAxios";
+import useAxiosRequest from "../../services/useAxios";
+import Button from "../../components/Button/Button";
+import styles from "./Form.module.css";
 
 const Form = () => {
   const [formData, setFormData] = useState();
@@ -34,12 +34,12 @@ const Form = () => {
   };
 
   return (
-    <>
+    <div className={styles.formContainer}>
       {!successMessage ? (
         <form
           onChange={changeHandler}
           onSubmit={submitHandler}
-          className="formBase"
+          className={styles.formBase}
         >
           <h2>Add new employee</h2>
           <label htmlFor="name">Name</label>
@@ -52,24 +52,24 @@ const Form = () => {
           <input type="date" name="startDate" />
           <label htmlFor="location">Location</label>
           <input type="text" name="location" />
-          <Button text="Add new" type="submit" role="primary-bg" />
+          <Button text="Add new" type="submit" role="primary" />
         </form>
       ) : (
         <div>
           <p>{successMessage}</p>
           <Button
-            text="Go to List"
+            text="Go to list"
             onClick={() => navigate("/")}
-            role="primary-bg"
+            role="primary"
           />
           <Button
-            text="Add Another Employee"
+            text="Add another employee"
             role="primary-bg"
             onClick={() => setSuccessMessage(null)}
           />
         </div>
       )}
-    </>
+    </div>
   );
 };
 

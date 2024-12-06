@@ -7,8 +7,7 @@ const Button = ({ onClick, text, type = "button", role = "primary" }) => {
       type={type}
       className={`${styles.btn} ${styles[role]}`}
     >
-      {" "}
-      {text}{" "}
+      {text}
     </button>
   );
 };

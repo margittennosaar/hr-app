@@ -5,9 +5,11 @@
   line-height: 1.5;
   font-weight: 400;
   --primary-color: #005872;
-  --secondary-color: #0095c3;
-  --dark-color: #242424;
+  --secondary-color: #00446b;
+  --highlight-color: #03a8db;
+  --dark-color: rgb(36, 36, 36);
   --light-color: #f9f9f9;
+  --light-grey: #ccc;
   background-color: var(--dark-color);
 }
 
@@ -38,4 +40,12 @@ a {
 
 a:hover {
   color: var(--secondary-color);
+}
+
+main {
+  min-height: calc(100vh - 225px);
+  max-width: 1200px;
+  display: flex;
+  justify-content: center;
+  margin:auto;
 }

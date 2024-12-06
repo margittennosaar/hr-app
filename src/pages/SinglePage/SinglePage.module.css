@@ -1,0 +1,17 @@
+.singlePageContent {
+  background-color: var(--light-color);
+  padding: 2rem;
+  color: var(--dark-color);
+  text-align: left;
+  border-radius: 5px;
+  margin: 2rem 0;
+}
+.singlePageContent p {
+  text-align: left;
+  font-size: 1rem;
+}
+
+.singlePageContent p {
+  text-align: left;
+  font-size: 1rem;
+}

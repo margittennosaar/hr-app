@@ -1,22 +1,19 @@
 import { useState } from "react";
-import Button from "../Button/Button";
-import useAxiosRequest from "../../services/useAxios";
-import "./EmployeeCard.css";
-import { calcYearsWorked } from "../../utilis/yearsCalc";
-import { getDepartmentClass } from "../../utilis/styleUtils";
 import { useNavigate } from "react-router-dom";
+import useAxiosRequest from "../../services/useAxios";
+import { getDepartmentClass } from "../../utilis/styleUtils";
+import { useEmployeeStatus } from "../../hooks/useEmployeeStatus";
+import Button from "../Button/Button";
+import styles from "./EmployeeCard.module.css";
 
 const EmployeeCard = ({ startDate, department, name, location, role, id }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [promotedRole, setPromotedRole] = useState(false);
   const [person, setPerson] = useState({ department, location, role });
   const navigate = useNavigate();
-
   const { error, update } = useAxiosRequest("http://localhost:3001/");
-
-  const yearsWorked = calcYearsWorked(startDate);
-  const isProbation = yearsWorked < 0.5;
-  const isAnniversary = yearsWorked > 0 && yearsWorked % 5 === 0;
+  const { yearsWorked, isProbation, isAnniversary } =
+    useEmployeeStatus(startDate);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -27,24 +24,39 @@ const EmployeeCard = ({ startDate, department, name, location, role, id }) => {
     update(`persons/${id}`, person);
   };
 
-  const renderEditableField = (value, name) =>
-    isEditing ? (
-      <input value={value} name={name} onChange={handleInputChange} />
+  const renderEditableField = (value, name) => {
+    const capitalizeWords = (text) =>
+      text
+        .toString()
+        .replace(
+          /\w\S*/g,
+          (word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+        );
+
+    const displayValue = value ? capitalizeWords(value) : "N/A";
+
+    return isEditing ? (
+      <input value={value || ""} name={name} onChange={handleInputChange} />
     ) : (
-      <p className={name}>{value}</p>
+      <p className={`${styles[name]}`}>{displayValue}</p>
     );
+  };
 
   if (error) return <p>{error}</p>;
 
   return (
-    <div className={`card ${getDepartmentClass(person.department)}`}>
-      <div className="card-header">
-        <p className="name">{name}</p>
-        <div className="card-icons">
+    <div
+      className={`${styles.card} ${
+        styles[getDepartmentClass(person.department)]
+      }`}
+    >
+      <div className={styles.cardHeader}>
+        <p className={styles.cardName}>{name}</p>
+        <div className={styles.cardIcons}>
           {promotedRole && (
             <div>
               <span className="material-symbols-outlined promote">star</span>
-              <p className="card-icon-message">Team Lead</p>
+              <p className={styles.cardIconMessage}>Team Lead</p>
             </div>
           )}
           {isAnniversary && (
@@ -52,7 +64,7 @@ const EmployeeCard = ({ startDate, department, name, location, role, id }) => {
               <span className="material-symbols-outlined celebrate">
                 celebration
               </span>
-              <p className="card-icon-message">
+              <p className={styles.cardIconMessage}>
                 Schedule recognition meeting for {yearsWorked} years of service!
               </p>
             </div>
@@ -63,7 +75,7 @@ const EmployeeCard = ({ startDate, department, name, location, role, id }) => {
               <span className="material-symbols-outlined notify">
                 notifications
               </span>
-              <p className="card-icon-message">
+              <p className={styles.cardIconMessage}>
                 Schedule probation review. This employee has worked for less
                 than 6 months.
               </p>
@@ -71,18 +83,23 @@ const EmployeeCard = ({ startDate, department, name, location, role, id }) => {
           )}
         </div>
       </div>
-      <div className="card-content">
-        <div className="card-data">
+      <div className={styles.cardContent}>
+        <div className={styles.cardData}>
           {renderEditableField(person.role, "role")}
           {renderEditableField(person.department, "department")}
           {renderEditableField(person.location, "location")}
+          <p className={styles.years}>
+            {yearsWorked} <span className={styles.text}> years in school </span>
+            <span className={styles.date}>({startDate})</span>
+          </p>
         </div>
-        <div className="card-image">
-          <img src={`https://robohash.org/${name}?set=set5`} alt={name} />
+        <div className={styles.cardImage}>
+          <img src={`https://api.multiavatar.com/${name}.svg`} alt={name} />
         </div>
       </div>
-      <div className="card-footer">
-        <div className="card-footer-actions">
+
+      <div className={styles.cardFooter}>
+        <div className={styles.cardFooterActions}>
           <Button
             onClick={() => setPromotedRole((prev) => !prev)}
             text={promotedRole ? "Demote" : "Promote"}
@@ -99,13 +116,9 @@ const EmployeeCard = ({ startDate, department, name, location, role, id }) => {
               setIsEditing((prev) => !prev);
             }}
             text={isEditing ? "Save" : "Edit"}
-            role="secondary"
+            role={isEditing ? "primary" : "secondary"}
           />
         </div>
-        <p className="years">
-          {yearsWorked} <span className="text"> years in school </span>
-          <span className="date">({startDate})</span>
-        </p>
       </div>
     </div>
   );

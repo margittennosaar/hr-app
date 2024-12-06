@@ -3,8 +3,8 @@
     {
       "id": "1",
       "name": "Elina Virtanen",
-      "role": "Frontend asdaasdad Teacher",
-      "department": "Web Development",
+      "role": "Frontend Teacher",
+      "department": "Game development",
       "startDate": "2018-08-01",
       "location": "Pasila"
     },
@@ -36,7 +36,7 @@
       "id": "5",
       "name": "Sara Salminen",
       "role": "3D Modeling Teacher",
-      "department": "Game Development",
+      "department": "Game development",
       "startDate": "2017-11-05",
       "location": "Pasila"
     },
@@ -78,14 +78,6 @@
       "role": "Animation Teacher",
       "department": "Game Development",
       "startDate": "2019-09-30",
-      "location": "Pasila"
-    },
-    {
-      "id": "522f",
-      "name": "Margit Tennosaar",
-      "role": "Teacher IT",
-      "department": "Web Development",
-      "startDate": "2019-01-01",
       "location": "Pasila"
     }
   ]
