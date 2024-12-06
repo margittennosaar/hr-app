@@ -11,7 +11,12 @@
       "phone": "+358401234567",
       "employmentType": "Full-Time",
       "salary": 4500,
-      "skills": ["JavaScript", "React", "HTML", "CSS"],
+      "skills": [
+        "JavaScript",
+        "React",
+        "HTML",
+        "CSS"
+      ],
       "manager": "Mikko Korhonen",
       "status": "Active"
     },
@@ -26,7 +31,12 @@
       "phone": "+358401234568",
       "employmentType": "Full-Time",
       "salary": 5000,
-      "skills": ["Node.js", "Express", "MongoDB", "Python"],
+      "skills": [
+        "Node.js",
+        "Express",
+        "MongoDB",
+        "Python"
+      ],
       "manager": "Riikka Mäkinen",
       "status": "Active"
     },
@@ -41,7 +51,11 @@
       "phone": "+358401234569",
       "employmentType": "Part-Time",
       "salary": 4000,
-      "skills": ["JavaScript", "React", "Node.js"],
+      "skills": [
+        "JavaScript",
+        "React",
+        "Node.js"
+      ],
       "manager": "Riikka Mäkinen",
       "status": "Active"
     },
@@ -56,7 +70,11 @@
       "phone": "+358401234570",
       "employmentType": "Full-Time",
       "salary": 4800,
-      "skills": ["Game Design", "Unity", "C#"],
+      "skills": [
+        "Game Design",
+        "Unity",
+        "C#"
+      ],
       "manager": "Päivi Saarinen",
       "status": "Active"
     },
@@ -71,7 +89,11 @@
       "phone": "+358401234571",
       "employmentType": "Contractor",
       "salary": 3000,
-      "skills": ["3D Modeling", "Blender", "Maya"],
+      "skills": [
+        "3D Modeling",
+        "Blender",
+        "Maya"
+      ],
       "manager": "Päivi Saarinen",
       "status": "Active"
     },
@@ -86,7 +108,11 @@
       "phone": "+358401234572",
       "employmentType": "Full-Time",
       "salary": 4200,
-      "skills": ["Unity", "C#", "Game Physics"],
+      "skills": [
+        "Unity",
+        "C#",
+        "Game Physics"
+      ],
       "manager": "Päivi Saarinen",
       "status": "Active"
     },
@@ -101,7 +127,11 @@
       "phone": "+358401234573",
       "employmentType": "Full-Time",
       "salary": 4700,
-      "skills": ["UI/UX Design", "Figma", "Adobe XD"],
+      "skills": [
+        "UI/UX Design",
+        "Figma",
+        "Adobe XD"
+      ],
       "manager": null,
       "status": "Active"
     },
@@ -116,7 +146,11 @@
       "phone": "+358401234574",
       "employmentType": "Full-Time",
       "salary": 4900,
-      "skills": ["Cybersecurity", "Network Security", "Penetration Testing"],
+      "skills": [
+        "Cybersecurity",
+        "Network Security",
+        "Penetration Testing"
+      ],
       "manager": "Riikka Mäkinen",
       "status": "Active"
     },
@@ -131,7 +165,11 @@
       "phone": "+358401234575",
       "employmentType": "Full-Time",
       "salary": 5000,
-      "skills": ["Game Art", "Illustration", "Animation"],
+      "skills": [
+        "Game Art",
+        "Illustration",
+        "Animation"
+      ],
       "manager": null,
       "status": "Active"
     },
@@ -146,7 +184,11 @@
       "phone": "+358401234576",
       "employmentType": "Part-Time",
       "salary": 3500,
-      "skills": ["Animation", "Blender", "Maya"],
+      "skills": [
+        "Animation",
+        "Blender",
+        "Maya"
+      ],
       "manager": "Päivi Saarinen",
       "status": "Active"
     }
