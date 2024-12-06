@@ -1,53 +1,63 @@
-# HR Application for practicing React
+# HR Management App
 
-## Week2
+This is a learning project to practice React while building a simple HR management app. Each week, you’ll follow steps to add new features and learn new React concepts. By the end, you’ll have a complete app that looks and works like a small HR tool.
 
-### Step 1: Create the employees data array
+## Features
 
-1. Create a new array containing data for ten employees.
-2. Include additional fields you may have added in previous steps (like `location` or `department`) to enrich the data.
+- **Employee Directory:** View and manage employees dynamically.
+- **Role Management:** Promote or demote employees with visual feedback.
+- **Login Functionality:** Uses client-side conditional rendering (no real authentication) to control access to the employee list.
+- **Form Handling:** Add and edit employee details dynamically.
+- **Routing:** Seamlessly navigate between application pages.
+- **API Integration:** Fetch, update, and manage employee data using a mock backend.
+- **Optimization:** Modular styling, reusable hooks, and clean architecture.
 
-### Example array format
+## Branch Structure
+- **Main Branch:** Contains the final version of the project with all features implemented.
+- **Week Branches:** Each week’s branch (e.g., week-1, week-2, etc.) contains the solution for the tasks of that specific week. You can use these branches to follow along or compare your progress.
 
-```javascript
-const employees = [
-  {
-    id: 1,
-    name: "Elina Virtanen",
-    role: "Frontend Development teacher",
-    department: "Web Development",
-    startDate: "2018-08-01",
-    location: "Pasila"
-  },
-  // Add additional employees here...
-];
-```
+## Weekly Steps
 
-## Step 2: Display employees list and add login functionality
+### Week 1: Get started
+- Set up a React project using Vite.
+- Build two components: `EmployeeCard` and `EmployeeList`.
+- Pass employee details as props and use them in the cards.
+- Add a button to promote/demote employees and update their role using state.
+- Write a simple README and push your code to GitHub.
 
-1. Import the employee array into your `EmployeesList` component.
-2. Map over the array to display each employee’s details in the `EmployeesList` component.
-3. Ensure that the list displays correctly with no errors or warnings in the console.
-4. Implement a fake “Log In” functionality:
-   - By default, show a "Log In" button and a message to log in to see the list.
-   - After logging in, display the list of employees.
-   - Toggle the button text between "Log In" and "Log Out" based on login state.
+### Week 2: Add more features
+- Create an array of employees with details like name, role, and start date.
+- Show this employee list in your app.
+- Add a "Log In" button to toggle between seeing the employee list or a login message.
+- Display years worked and show reminders for anniversaries or probation reviews.
+- Update the app to handle special cases like new hires and long-term employees.
 
-## Step 3: Add "Team Lead" promotion functionality
+### Week 3: Clean up and add interactivity
+- Use props destructuring to make your code cleaner.
+- Create a `Button` component and use it everywhere you need buttons.
+- Add an "Edit" button to allow changes to roles, departments, and locations.
+- Update styling dynamically based on the department.
+- Clean up your code and test all features before pushing to GitHub.
 
-1. Modify the "Team Lead" functionality in each `EmployeeCard`.
-2. Display a star icon (⭐) on the employee’s card only if the employee is promoted to "Team Lead."
-3. Use conditional rendering for the promotion button:
-   - Display "Promote to Team Lead" if the employee is not a Team Lead.
-   - Display "Demote from Team Lead" if the employee is already a Team Lead.
+### Week 4: Add routing
+- Install React Router and create pages for the app: Login, List, and Form.
+- Set up routes so users can navigate between these pages.
+- Build a form to add new employees and manage its input with state.
+- Add a login page with basic username/password functionality.
 
-## Step 4: Display years worked and add reminders
+### Week 5: Connect to a backend
+- Use `json-server` to create a mock backend and store employee data in `db.json`.
+- Fetch the employee list from the backend instead of using a static array.
+- Add functionality to create, edit, and fetch employee data dynamically.
+- Add a detailed view page for each employee.
 
-1. In `EmployeeCard`, calculate and display years worked based on each employee's `startDate`.
-2. Add reminders based on the years worked:
-   - **Anniversary Reminder**: If `yearsWorked` is exactly 5, 10, 15, etc., display a celebration icon and a subtle message, "Schedule recognition meeting."
-   - **Probation Reminder**: If `yearsWorked` is less than 0.5 (6 months), display a notification icon and a message, "Schedule probation review."
-3. Make sure your data includes:
-   - Employee with 5, 10, or 15 years of service for testing the recognition reminder.
-   - Employee with less than 6 months of service for testing the probation review reminder.
+### Week 5: Polish your app
+- Use custom hooks to simplify and reuse logic.
+- Implement CSS Modules for better styling and scope management.
+- Replace inline styles with CSS variables for consistent theming.
+- Refactor the file structure to keep everything organized.
+- Test the app and ensure all features work smoothly.
 
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.
