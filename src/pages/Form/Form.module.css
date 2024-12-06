@@ -1,0 +1,38 @@
+.formContainer {
+  display: flex;
+  justify-content: center;
+  color: var(--light-color);
+}
+
+.formBase {
+  width: 300px;
+}
+
+.formBase input, .formBase select {
+  width: 300px;
+  padding: 0.5rem;
+  font-size: inherit;
+  font-family: inherit;
+  border-radius: 10px;
+  background-color: var(--light-color);
+  color: var(--dark-color);
+}
+
+.formBase label {
+  width: 300px;
+  display: inline-block;
+  margin-top: 1rem;
+  color: var(--light-grey);
+  font-size: 0.8rem;
+}
+.formBase select {
+  width: 100%;
+}
+.formContainer button {
+  margin-right:1rem;
+}
+
+.formContainer p {
+  text-align: center;
+  font-size: 1.2rem;
+}

@@ -1,8 +1,12 @@
 export const getDepartmentClass = (dept) => {
-    switch (dept) {
-        case "Web Development":
+    if (!dept) return "default";
+
+    const lowerCaseDepartment = dept.toLowerCase();
+
+    switch (lowerCaseDepartment) {
+        case "web development":
             return "web";
-        case "Game Development":
+        case "game development":
             return "game";
         default:
             return "default";

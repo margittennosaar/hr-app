@@ -1,0 +1,33 @@
+.loginContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.loginForm {
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid var(--light-grey);
+  border-radius: 10px;
+  background-color: var(--light-color);
+  color: var(--dark-color);
+}
+
+.loginForm label {
+  width: 300px;
+  display: inline-block;
+  margin-top: 1rem;
+  color: var(--dark-color);
+}
+.loginForm input {
+  width: 100%;
+  padding: 0.3rem 0.5rem;
+  display: inline-block;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+.loginForm button {
+  margin-top: 1rem;
+}

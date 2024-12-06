@@ -4,7 +4,8 @@
   border-radius: 5px;
   color: #333;
   padding: 1rem;
-  width: 360px;
+  min-width: 300px;
+  width: 32%;
   position: relative;
 }
 
@@ -17,7 +18,7 @@
   display: block;
   background-color: green;
   border-radius: 5px 5px 0 0;
-  height: 5px;
+  height: 7px;
   width: 100%;
   top: 0;
   left: 0;
@@ -38,11 +39,11 @@
 
 /* Card header part*/
 
-.card-header {
+.cardHeader {
   position: relative;
 }
 
-.name {
+.cardName {
   font-weight: 700;
   text-transform: uppercase;
   font-size: 1.5rem;
@@ -50,7 +51,7 @@
   margin: inherit;
 }
 
-.name::after {
+.cardName::after {
   content: "";
   position: relative;
   width: 100%;
@@ -59,23 +60,23 @@
   display: block;
 }
 
-.card-icons {
+.cardIcons {
   position: absolute;
   right: 0;
   top: 0;
   cursor: pointer;
 }
 
-.card-icons div {
+.cardIcons div {
   display: inline;
   margin-left: 1rem;
 }
 
-.card-icon-message {
+.cardIconMessage {
   display: none;
 }
 
-.card-icons div:hover .card-icon-message {
+.cardIcons div:hover .cardIconMessage {
   display: inline-block;
   position: absolute;
   right: 0;
@@ -90,59 +91,58 @@
 }
 
 /* Card main area part*/
-.card-content {
+.cardContent {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+  font-size: 0.8rem;
 }
 
-.card-data {
+.cardData {
   flex: 2;
 }
+.cardData input {
+  font-family: inherit;
+  padding: 0.2rem;
+  font-size: inherit;
+  width: 100%;
+}
 
-.card-image {
+.cardImage {
   flex: 1;
   align-self: end;
   display: flex;
 }
 
-.card-image img {
+.cardImage img {
   object-fit: cover;
-  width: 50%;
+  width: 80%;
   margin-left: auto;
-  margin-top: 1rem;
+  margin-top: 0.8rem;
 }
 
 .role {
   font-weight: 300;
-  font-size: 0.8rem;
   margin-top: 0;
   margin-bottom: 1rem;
+  font-size: inherit;
 }
 
 .department,
 .location,
-.text {
-  font-size: 0.8rem;
+.text,
+.years,
+.date {
+  font-size: inherit;
   padding: inherit;
   margin: inherit;
 }
 
 /* Card footer part*/
 
-.card-footer {
+.cardFooter {
   display: flex;
   justify-content: space-between;
   align-items: end;
-  height: 60px;
-}
-
-.years {
-  align-self: end;
-  margin: inherit;
-}
-
-.date {
-  font-size: 0.5rem;
-  font-style: italic;
+  height: 40px;
 }

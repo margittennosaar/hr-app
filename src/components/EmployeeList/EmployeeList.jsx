@@ -1,35 +1,26 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import useAxiosRequest from "../../services/useAxios.js";
 import EmployeeCard from "../EmployeeCard/EmployeeCard.jsx";
-import "./EmployeeList.css";
+import styles from "./EmployeeList.module.css";
 
 const EmployeeList = () => {
-  const [employees, setEmployees] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const {
+    data: employees,
+    loading,
+    error,
+    read,
+  } = useAxiosRequest("http://localhost:3001/");
 
   useEffect(() => {
-    const fetchEmployees = async () => {
-      try {
-        setIsLoading(true);
-        const response = await axios.get("http://localhost:3001/persons");
-        setEmployees(response.data);
-      } catch (err) {
-        setError("Failed to fetch employees");
-        console.error(err);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-    fetchEmployees();
+    read("persons");
   }, []);
 
-  if (isLoading) return <p>Loading...</p>;
+  if (loading) return <p>Loading...</p>;
   if (error) return <p>{error}</p>;
 
   return (
-    <div className="list">
-      {employees.map((employee) => {
+    <div className={styles.list}>
+      {(employees || []).map((employee) => {
         return <EmployeeCard key={employee.id} {...employee} />;
       })}
     </div>

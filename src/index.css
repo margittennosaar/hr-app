@@ -4,10 +4,13 @@
   font-family: "Lato", sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  --primary-color: #005872;
+  --secondary-color: #00446b;
+  --highlight-color: #03a8db;
+  --dark-color: rgb(36, 36, 36);
+  --light-color: #f9f9f9;
+  --light-grey: #ccc;
+  background-color: var(--dark-color);
 }
 
 * {
@@ -31,23 +34,18 @@ h1 {
 
 a {
   font-weight: 500;
-  color: #005872;
+  color: var(--primary-color);
   text-decoration: inherit;
 }
 
 a:hover {
-  color: #0095c3;
+  color: var(--secondary-color);
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #0095c3;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #005872;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+main {
+  min-height: calc(100vh - 225px);
+  max-width: 1200px;
+  display: flex;
+  justify-content: center;
+  margin:auto;
 }
