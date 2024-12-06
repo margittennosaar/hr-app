@@ -16,7 +16,6 @@ This is a learning project to practice React while building a simple HR manageme
 - **Main Branch:** Contains the final version of the project with all features implemented.
 - **Week Branches:** Each week’s branch (e.g., week-1, week-2, etc.) contains the solution for the tasks of that specific week. You can use these branches to follow along or compare your progress.
 
-
 ## Weekly Steps
 
 ### Week 1: Get started
