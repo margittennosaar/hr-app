@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import useAxiosRequest from "../../services/useAxios";
+import { useEmployeeStatus } from "../../hooks/useEmployeeStatus";
 import Button from "../../components/Button/Button";
 import styles from "./SinglePage.module.css";
 
@@ -16,16 +17,43 @@ const SinglePage = () => {
     read();
   }, []);
 
+  const { yearsWorked } = useEmployeeStatus(data?.startDate);
+
   if (loading) return <p>Loading...</p>;
+
+  if (!data) return <p>No data available.</p>;
+
   return (
     <div>
       {data && (
         <div className={styles.singlePageContent}>
-          <h2>{data.name}</h2>
-          <p>{data.role}</p>
-          <p>{data.department}</p>
-          <p>{data.location}</p>
-          <p> {data.startDate}</p>
+          <div className={styles.status}>
+            <p>{data.status}</p>
+            <p>{data.startDate}</p>
+            <p className={styles.lessImportant}>{yearsWorked} years</p>
+          </div>
+          <div>
+            <h2>{data.name}</h2>
+            {data.skills.map((skill) => (
+              <span key={skill}>{skill} </span>
+            ))}
+            <div className={styles.data}>
+              <div className={styles.role}>
+                <p>{data.role}</p>
+                <p>{data.department}</p>
+                <p>{data.location}</p>
+              </div>
+              <div className={styles.contactDetails}>
+                <p> {data.phone}</p>
+                <p> {data.email}</p>
+              </div>
+            </div>
+            <div className={styles.management}>
+              <p> {data.employmentType}</p>
+              <p> {data.salary} €</p>
+              <p> {data.manager}</p>
+            </div>
+          </div>
         </div>
       )}
       <Button text="Back" role="primary-light" onClick={() => navigate(-1)} />
