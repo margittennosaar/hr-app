@@ -8,9 +8,10 @@
   color: #005872;
   padding: 0.3rem 1rem;
   height: 2rem;
+  border-radius: 8px;
 }
 
-.btn.btn.primary:hover {
+.btn.primary:hover {
   border-color: #0095c3;
   background-color: #0095c3;
   color: #f9f9f9;
@@ -22,13 +23,19 @@
 }
 
 .btn.primary {
-  border-radius: 8px;
   border: 1px solid #005872;
 }
 
 .btn.secondary {
   border: none;
   padding: 0.3rem 0.8rem;
+}
+
+.btn.menu {
+  border: none;
+  background-color: #fff;
+  padding: 0.3rem 0.8rem;
+  width: 75px;
 }
 
 .btn.secondary:hover {
