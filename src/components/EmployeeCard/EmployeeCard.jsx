@@ -2,34 +2,33 @@ import { useState } from "react";
 import Button from "../Button/Button";
 import "./EmployeeCard.css";
 import { calcYearsWorked } from "../../utilis/yearsCalc";
+import { getDepartmentClass } from "../../utilis/styleUtils";
 
-const EmployeeCard = (props) => {
-  const [promotedRole, setRole] = useState(false);
+const EmployeeCard = ({ startDate, department, name, location, role }) => {
+  const [isEditing, setIsEditing] = useState(false);
+  const [promotedRole, setPromotedRole] = useState(false);
+  const [person, setPerson] = useState({ department, location, role });
 
-  const yearsWorked = calcYearsWorked(props.startDate);
-
+  const yearsWorked = calcYearsWorked(startDate);
   const isProbation = yearsWorked < 0.5;
   const isAnniversary = yearsWorked > 0 && yearsWorked % 5 === 0;
 
-  const clickHandler = () => {
-    setRole(!promotedRole);
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setPerson((prevState) => ({ ...prevState, [name]: value }));
   };
 
-  const getDepartmentClass = (dept) => {
-    switch (dept) {
-      case "Web Development":
-        return "web";
-      case "Game Development":
-        return "game";
-      default:
-        return "default";
-    }
-  };
+  const renderEditableField = (value, name) =>
+    isEditing ? (
+      <input value={value} name={name} onChange={handleInputChange} />
+    ) : (
+      <p className={name}>{value}</p>
+    );
 
   return (
-    <div className={`card ${getDepartmentClass(props.department)}`}>
+    <div className={`card ${getDepartmentClass(person.department)}`}>
       <div className="card-header">
-        <p className="name">{props.name}</p>
+        <p className="name">{name}</p>
         <div className="card-icons">
           {promotedRole && (
             <div>
@@ -39,7 +38,7 @@ const EmployeeCard = (props) => {
           )}
           {isAnniversary && (
             <div>
-              <span class="material-symbols-outlined celebrate">
+              <span className="material-symbols-outlined celebrate">
                 celebration
               </span>
               <p className="card-icon-message">
@@ -50,7 +49,7 @@ const EmployeeCard = (props) => {
 
           {isProbation && (
             <div>
-              <span class="material-symbols-outlined notify">
+              <span className="material-symbols-outlined notify">
                 notifications
               </span>
               <p className="card-icon-message">
@@ -63,22 +62,29 @@ const EmployeeCard = (props) => {
       </div>
       <div className="card-content">
         <div className="card-data">
-          <p className="role">{props.role}</p>
-          <p className="department">{props.department}</p>
-          <p className="location">{props.location}</p>
+          {renderEditableField(person.role, "role")}
+          {renderEditableField(person.department, "department")}
+          {renderEditableField(person.location, "location")}
         </div>
         <div className="card-image">
-          <img src={`https://robohash.org/${props.name}?set=set5`} />
+          <img src={`https://robohash.org/${name}?set=set5`} alt={name} />
         </div>
       </div>
       <div className="card-footer">
-        <Button
-          onClick={clickHandler}
-          text={promotedRole ? "Demote" : "Promote"}
-        />
+        <div className="card-footer-actions">
+          <Button
+            onClick={() => setPromotedRole((prev) => !prev)}
+            text={promotedRole ? "Demote" : "Promote"}
+          />
+          <Button
+            onClick={() => setIsEditing((prev) => !prev)}
+            text={isEditing ? "Save" : "Edit"}
+            role="secondary"
+          />
+        </div>
         <p className="years">
-          {yearsWorked} <span className="text">years in school </span>
-          <span className="date">({props.startDate})</span>
+          {yearsWorked} <span className="text"> years in school </span>
+          <span className="date">({startDate})</span>
         </p>
       </div>
     </div>
